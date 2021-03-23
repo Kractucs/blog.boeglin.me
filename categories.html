@@ -1,0 +1,33 @@
+---
+layout: list
+---
+
+
+<div id="list">
+    {% capture tags %}
+    <p>
+        {% for tag in site.categories %}
+            <a href="{{ site.baseurl }}/categories#{{ tag[0] | slugify: 'pretty' }}">{{ tag[0] }}</span></a> |
+        {% endfor %}
+    </p>
+    {% endcapture %}
+    {{ tags | split:'</li>' | sort | join:'</li>' }}
+</div>
+{% assign sorted_tags = site.categories | sort %}
+{% for tag in sorted_tags %}
+{% assign vids = tag[1] | sort %}
+
+{% if vids != empty %}
+
+<p class="font-weight-bold" id="{{tag[0] | uri_escape | downcase}}">{{tag[0]}}</p>
+  <p>
+  {% for p in vids %}
+  <a href="/{{p.type | downcase}}/"></a> <a href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a> &raquo;  <span class="entry-date"><time datetime="{{ p.date | date_to_xmlschema }}" itemprop="datePublished"><a href="/{{p.type | downcase}}/"></a>  <span class="entry-date"><time datetime="{{ p.date | date_to_xmlschema }}" itemprop="datePublished">{{ p.date | date: "%-d %B %Y" | replace:"January","Janvier" | replace:"February","Fevrier" | replace:"March","Mars" | replace:"April","Avril" | replace:"May","Mai" | replace:"June","Juin" | replace:"July","Juillet" | replace:"August","Août"| replace:"September","Septembre" | replace:"October","Octobre" | replace:"November","Novembre" | replace:"December","Decembre" }}</time></span>
+  <br />
+  {% endfor %}
+</p>
+<hr>
+
+{% endif %}
+
+{% endfor %}

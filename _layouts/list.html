@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+  {% include head.html %}
+
+<body>
+  {% include header.html %}
+
+    <div class="container">
+        <div class="primary">
+            <section class="post tags">
+                <div class="post-inner shadow-sm rounded">
+                    <h5><a href="/"><i class="fas fa-arrow-left"></i> Retour à la page d'accueil</a></h5>
+                    {{ content }}
+                </div>
+            </section>
+        </div>
+    </div>
+
+  {% include footer.html%}
+
+   <!-- Jquerry Javascript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <!-- Bootstrap Javascript -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+  <script src="{{ "/assets/js/site.js" | prepend: site.baseurl }}"></script>
+
+</body>
+
+</html>

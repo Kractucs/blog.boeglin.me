@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+{% if site.show_blog_header %}
+  {% include blog_header.html %}
+{% endif %}
+
+<div class="container">
+  <div class="row">
+    <div class="primary col-lg-9 col-12">
+      {% for post in site.posts %}
+      <section class="section">
+        <div class="section-inner shadow-sm rounded">
+          <h2 class="heading"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
+          <div class="infos">
+            <p><i class="fa fa-calendar fa-fw mr-1"></i><time>
+              {{ post.date | date: "%-d %B %Y" | replace:"January","Janvier" | replace:"February","Fevrier" | replace:"March","Mars" | replace:"April","Avril" | replace:"May","Mai" | replace:"June","Juin" | replace:"July","Juillet" | replace:"August","Août"| replace:"September","Septembre" | replace:"October","Octobre" | replace:"November","Novembre" | replace:"December","Decembre" }}</time></p>
+
+            </time></p>
+            <p class="badges"><i class="fa fa-tag"></i><span class="badge text-capitalize badge-theme">{{post.category}}</span></p>
+          </div>
+          <div class="content">
+            {% if post.thumbnail %}
+              <div class="imgcontainer">
+                <img src="{{post.thumbnail}}" alt="{{post.title}}"  class="pull-left img-responsive thumb img-thumbnail" />
+              </div>
+            {% endif %}
+            <article class="excerpt">{{post.excerpt}}</article>
+          </div>
+          <p><a class="pull-right" href="{{post.url | prepend: site.baseurl }}">Lire la suite</a></p>
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+    <div class="secondary col-lg-3 col-12">
+      <aside class="aside section">
+        <div class="section-inner shadow-sm rounded">
+            <div class="content">
+              <h4>Catégories</h4>
+              <ul>
+              {% for category in site.categories limit:5 %}
+                <li><a class="text-capitalize" href="{{ site.baseurl }}/categories#{{ category[0] | slugify: 'pretty' }}">{{category|first}}</a></li>
+              {% endfor %}
+              </ul>
+              <p><a href="{{ '/categories' | prepend: site.baseurl }}">Voir toutes les catégories</a></p>
+              <hr>
+              <h4>Flux RSS</h4>
+              <p>Abonne toi au flux RSS pour obtenir les derniers articles.</p>
+              <p><a href="{{ '/feed.rss' | prepend: site.baseurl }}" target="_blank">S'abonner au flux</a></p>
+              <hr>
+              <h4>Mots-clés</h4>
+              <ul>
+                {% capture tags %}
+                  {% for tag in site.tags limit:5 %}
+                    <li data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}">
+                       <a href="{{ site.baseurl }}/tags#{{ tag[0] | slugify: 'pretty' }}">{{ tag[0] }} <span>{{ tag[1].size }}</span></a>
+                    </li>
+                  {% endfor %}
+                {% endcapture %}
+                {{ tags | split:'</li>' | sort | join:'</li>' }}
+                </ul>
+              <p><a href="{{ '/tags' | prepend: site.baseurl }}">Voir tous les mots-clés</a></p>
+              <hr>
+            </div><!--//content-->
+        </div><!--//section-inner-->
+      </aside><!--//aside-->
+    </div>
+  </div>
+</div>

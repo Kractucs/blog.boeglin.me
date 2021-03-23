@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<div class="container">
+  <div class="primary">
+    <section class="post">
+      <div class="post-inner shadow-sm rounded">
+        <p><a href="/"><i class="fas fa-arrow-left"></i> Retour à la page d'accueil</a></p>
+        <h2 class="heading">{{page.title}}</h2>
+        <div class="infos">
+          <p><i class="fa fa-calendar"></i><time>
+            {{ page.date | date: "%-d %B %Y" | replace:"January","Janvier" | replace:"February","Fevrier" | replace:"March","Mars" | replace:"April","Avril" | replace:"May","Mai" | replace:"June","Juin" | replace:"July","Juillet" | replace:"August","Août"| replace:"September","Septembre" | replace:"October","Octobre" | replace:"November","Novembre" | replace:"December","Décembre" }}</time></p>
+          <p class="badges"><i class="fa fa-tag"></i><span class="badge badge-theme">{{page.category}}</span> &raquo; {% for tag in page.tags %}<span class="badge">{{tag}}</span>{% endfor %}</p>
+        </div>
+        <div class="content">
+          <article>{{ content }}</article>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

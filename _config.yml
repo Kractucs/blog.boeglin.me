@@ -1,0 +1,16 @@
+# Site settings
+title: Thomas Boeglin - Blog
+email: thomasboe68@gmail.com
+description: "Un peu de moi mais beaucoup de blabla !"
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://blog.boeglin.me/" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+highlighter: rouge
+
+show_blog_header: true

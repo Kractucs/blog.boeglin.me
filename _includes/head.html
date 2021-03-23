@@ -1,0 +1,23 @@
+<head>
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Thomas Boeglin">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="description"
+    content="{{page.title}} {{page.excerpt | strip_html}} {{ site.description }}">
+  <title>{% if page.title %} {{ page.title }} - {{ site.title }} {% else %} {{ site.title }} {% endif %}</title>
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- FontAwesome JS -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">   
+  <!-- Theme CSS -->
+  <link media="all" rel="stylesheet" href="{{ "/assets/css/style.css" | prepend: site.baseurl }}">
+
+</head>
